@@ -1,7 +1,7 @@
 ---
 title: Friday the 13th - ROM Map
 layout: default
-nav_order: 1
+nav_order: 2
 parent: Friday the 13th
 ---
 
