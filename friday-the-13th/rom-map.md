@@ -5,15 +5,16 @@ nav_order: 2
 parent: Friday the 13th
 ---
 
-| Address | Name | Context       |Notes | Values |
-| :---:   | :--- | :---          | :--- |  :---      |
-| 0x505   | Player Health    | Inside cabin. |  UI doesn't auto update    |   TBD  |
-| 0x507   | Active Counselor | Map Screen |  Index value identifying counselor  |   TBD  |
-| 0x51C   | Jason Health     | Inside cabin. |  UI doesn't auto update    |   TBD  |
+| Address | Name | Context       |
+| :---:   | :--- | :---          |
+| 0x505   | Player Health    | Inside cabin. | 
+| 0x507   | Active Counselor | Map Screen |
+| 0x51C   | Jason Health     | Inside cabin. | 
 
 # ROM Map
 
 ## Counselor Attributes
+
 | Address   | Description               | Notes |
 | :---      | :---                      | :---  |
 | 0x8AEB | Counselor names              | 36 bytes total, fixed width 6 bytes per name. See text table for char values. <br />0xFF denotes blank character.|
@@ -23,12 +24,14 @@ parent: Friday the 13th
 n.b. that counselor jump skill is at least partially hardcoded into the game.
 
 ## Misc Attributes
+
 | Address   | Description             |
 | :--    | :--             | 
 | 0xDF2D | Table of weapon damage values |
 | 0xDF4B | Table of mob health           |
 
 ## Zone information
+
 | Address   | Description             |
 | :--    | :--             | 
 | 0x9806 | Length information about each zone?             |
@@ -36,6 +39,7 @@ n.b. that counselor jump skill is at least partially hardcoded into the game.
 
 
 ## Jason Patrol 
+
 | Address   | Description             |
 | :--    | :--             | 
 | 0xB62F | Multi-byte list containing Jason's patrol route |
