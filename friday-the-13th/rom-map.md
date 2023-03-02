@@ -5,12 +5,18 @@ nav_order: 2
 parent: Friday the 13th
 ---
 
+| Address | Name | Context       |Notes | Values |
+| :---:   | :--- | :---          | :--- |  :---      |
+| 0x505   | Player Health    | Inside cabin. |  UI doesn't auto update    |   TBD  |
+| 0x507   | Active Counselor | Map Screen |  Index value identifying counselor  |   TBD  |
+| 0x51C   | Jason Health     | Inside cabin. |  UI doesn't auto update    |   TBD  |
+
 # ROM Map
 
 ## Counselor Attributes
-| Address   | Description             | Notes |
-| :---       | :---                     | :--- |
-| 0x8AEB | Counselor names | 36 bytes total, fixed width 6 bytes per name. See text table for char values. <br />0xFF denotes blank character.|
+| Address   | Description               | Notes |
+| :---      | :---                      | :---  |
+| 0x8AEB | Counselor names              | 36 bytes total, fixed width 6 bytes per name. See text table for char values. <br />0xFF denotes blank character.|
 | 0xB268 | Counselor walk speed         | 6 bytes, indexed by counselor id. <br />0x03 = daytime zombie speed<br />0x04 = normal<br />0x05 = fast<br />  0x06 = very fast<br /> 0x07 = ludicrous speed |
 | 0xCC7E | Counselor min-kill for drops | 6 bytes, indexed by counselor id. Min number of mob kills for a counselor to get item drops   |
 
