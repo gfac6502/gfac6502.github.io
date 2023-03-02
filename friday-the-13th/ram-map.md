@@ -6,7 +6,7 @@ parent: Friday the 13th
 ---
 
 
-## RAM Map
+# RAM Map
 
 | Address | Name | Context       |Notes | Values |
 | :---:   | :--- | :---          | :--- |  :---      |
