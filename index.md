@@ -1,6 +1,7 @@
 ---
 title: Home
 layout: home
+nav_order: 1
 ---
 
 This is a bare-bones site intended to hold information on the internals of NES games as I play around with them.
