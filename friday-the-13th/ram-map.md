@@ -1,3 +1,11 @@
+---
+title: Friday the 13th - RAM Map
+layout: default
+nav_order: 1
+parent: Friday the 13th
+---
+
+
 ## RAM Map
 
 | Address | Name | Context       |Notes | Values |
