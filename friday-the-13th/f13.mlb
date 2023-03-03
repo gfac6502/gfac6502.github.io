@@ -1,0 +1,282 @@
+﻿R:0000::saving X and Y to stack before going into SR
+R:0031::number of currently spawned items maybe?
+R:0420:clr_move_state
+R:0488::just hit invuln countdown?
+R:0500:clr_path
+R:0503:campers_remaining
+R:0504:clrs_remain
+R:0505:clr_health:clr_health
+R:0506:clr_weapon
+R:0507:cur_clr
+R:050F:jason_wait_timer
+R:0510:jason_road:which road jason is on\ncontext of overworld
+R:0511:attacked_cabin
+R:0512:json_road_section_mb:potentially section of road jason is on, context of overworld
+R:0513:campers_cabin_B
+R:0514:campers_cabin_c
+R:0515:campers_cabin_d
+R:0516::update zombie kill count
+R:0517:has_lighter
+R:0518:has_flashlight
+R:0519:clr_vitamins
+R:051C:jsn_health
+R:0574:button_down:only holds value on press, not on down
+R:0575:buttons_pressed
+R:0587:jason_activity_timer:bp when first starting
+R:058D:clr_attack_clock
+R:0592:jason_in_curr_cabin
+R:05AB:jason_hiding_room
+P:008E::wait for frame to finish?
+P:00FB::bp on overworld
+P:013D::bp in pause screen
+P:01B1:poll_controllers
+P:01DF:delay_after_input_mb:with values reduced, graphics in status zone get messed up. delay so it gets drawn?
+P:02A6:push_2A_to_stack
+P:02AA::preserve stack pointer to caller
+P:02B1::get $2A into stack
+P:02B8::restore stack pointer to caller
+P:035B::write string on cabin wall - in this case Thank you! when resucing clr
+P:040A:array_diff_wrap9:given an array pointed to by $00-01,  of length Y, decrease each element by the values at array pointed to by $02-$03 of length Y.\n\nWhen result is negative, reset to #$09.\n\nUsed generally by jason movement. altered array is 0x58A-B or C, values are in ROM, e.g. B875[Y]
+P:09D4::read clr inventory when entering cabin
+P:0B0F:blank_display_camper_countdown:blanks the camper countdown display
+P:0B10::save X to stack
+P:0B21::restore X to stack
+P:0B22::restore X to stack
+P:0CF0::jason finally dead 3 times?
+P:0DAB::current clr died
+P:0E20::reset day counters on jason kill
+P:0EE6::init some beginning of game values
+P:0F8C::is A >= 6?
+P:0F90::A was < 6, \nset 0x5B9 to current value of 0x5B8 and store current value of A (which should have been set on one of entry points) in 0x5B8
+P:0F9B::saving A X and Y to stack before SR
+P:0FA1::recover A just before entiring subroutine
+P:0FA6::recover X and Y from stack after SR
+P:15AC::get the upper half of A
+P:15AE::shift upper half into lower
+P:163A::bp when entering zone
+P:1894::bp when entering cave, prob all zones
+P:189F::by this point it points to id of path entered
+P:18C4::calculating offset into x98E4\nOffset is (clr_zone*2)+clr_zone+has_flashlight?
+P:2829:clr_enem:clear enemy entity column?
+P:282F::setting base address for indirect call at A838 to $0300
+P:2831::X is entity idx?  e.g. 02 is first mob
+P:2832::stash X on stack
+P:2833::Y is entity index
+P:2838::bp when zombie spawning, populates $0302 for first zombie\n\ndoes not break when projectile tossed
+P:2848::recover X from stack
+P:2B12::bp on  main path (ech frame?)\nX here appears to refer to entity. 0 is player,2 is first zombie, 1 is broken on when clr projectile present
+P:2F2C::can't pause if jumping
+P:322F::loops until PpuStatus ANd $40 is true\n\n0x0010 0000
+P:3261:get_clr_speed:Looks up the walk speed of the camp counselor
+P:3264::look up speed in table, with counselor ID ad index
+P:326E:can_clr_fire_projectile_mb
+P:3278::no, if they already have one in the air
+P:32F4:is_b_pressed
+P:33D0::assign clr move state
+P:33E5::bp on clr death
+P:33FF::animate clr death on ground
+P:348C:do_throw_projectile:clr throwing projectile
+P:34B1::clr crouch
+P:34EA::clr neutral move state (walk/run)
+P:34EC::after clr throw anim completes, crouch anim completes, jump completes
+P:353F::clr jumping
+P:358D::bp on first load
+P:3595::set first step of jason path based on $31
+P:3640:jason_actions_mb
+P:3646::bp at least when exiting cabin to zone\nactually frequently on path
+P:3648::jason already attacking so don't do encounter check?
+P:3663:jsn_road_encounter
+P:3673::bp when encountering jason on the road
+P:3696:reset_jason_activity_timer
+P:36AC:is_attack_cabin_set:read attacked cabin id
+P:36AF::if attack cabin is 0, jump to end of sr
+P:36B3::if attack cabin is < 0x0B, goto B6D4
+P:36B7::if attack cabin does not equal 0x0E, jump to end of subroutine
+P:36BB::zero out 513 to 515
+P:36DD::if it finds a non-negative byte in the block from 0x74E to 0x74E+Y, then a cabin attack happens
+P:36E1::bp set when attacking a clr in a cabin, set to 2
+P:3785::breakpoint when attacking clrs
+P:3788::is the clr attack clock negative?
+P:378A::have the clrs run out of time?
+P:378C::if the clrs have exactly run out of time, go to B827 which RTS
+P:378F::clr attack clock is positive
+P:37B6::should get here when there are 0 campers remaining
+P:37F3::camper attack clock has run out (gone negative), handle consequences of that.
+P:37FE::remember value of 0x58E 
+P:37FF::set bit in 0x58E the load A with original value
+P:3807::did 0x58E == 1?
+P:3819::0x58E was 1, arrived from B807
+P:3827:return_jason_actions_maybe
+P:3828:decrease_campers_on_timer
+P:382A::set flag
+P:382E::preserve X on stack
+P:3835::get index based on id of attacked cabin
+P:3842::i.a. $0501 in 00-01
+P:384A::i.a. B878 in 02-03
+P:3853::reduce camper count?
+P:385A::restore X register from stack
+P:385B::read, at least in part, for effect on CPU flags
+P:385F:pick_attacked_camper_cabin
+P:3867::loop thru camper cabins until the first one with living campers
+P:386C::conver identity of camper cabin (1st, 2nd, or 3rd) to cabin index
+P:3871::bp camper counter transition from 31 to 30 and 21 to 20
+P:387A:ctxt_moving_jason:something to do with moving jason, this gets called at least when he attacks a cabin
+P:38A2::upper lower byte stuff
+P:38AF::bp hit when jason begins cabin attack
+P:38E7::clr killed by jason, decrease
+P:39E0::triggered walking up path in forest
+P:39FA::bp entering cabin jason attacking
+P:3A3A::preserve current X on stack
+P:3A3B::.
+P:3A3E::get player X location on screen
+P:3A55::restore X from stack (saved at sub start) without clobbering A
+P:3A56::.
+P:3A57::.
+P:3A58::.
+P:3BD5::lookup room jason is hiding in
+P:3BD8::record room jason is hiding in
+P:3C9C::load cabin wall id onturn
+P:3CD5::if has key, jump to 0xBCEF
+P:3CFE::load cabin wall id on walk
+P:3D59::is jason in same room?mb
+P:3D61::bp entering room with jason
+P:3D72:on_cabin_exit
+P:3D91::happened in a cabin shortly after reading a note
+P:3DA2::advance day-night cycles?
+P:4423::bp when water zombie at peak and end of jump
+P:4A92::called at least when moving thru cabin rooms
+P:4A95::and also zone transitions?
+P:4A9F::bp at least when exiting cabin to zone\nactually frequently on path
+P:4AA9::expect to only bp when jason is met on road
+P:4ADD::di we just kill pam vorhees
+P:4AE9::bp when killing Pam vorhees
+P:4B32::cleared when jason on path encounter ends with jason running away
+P:4C1E::is mob walk timer up?
+P:4C28::if so, compaer to clr x location
+P:4C52:on_zombie_kill_mb:increment zombie kill count
+P:4C55::get current clr idx
+P:4C58::look up min kill req for clr
+P:4C5B::assign min kill to $00
+P:4C5F::assign current kill count to A
+P:4C62::compare kill coun tto min kill req
+P:4C64::don't continue rest of SR if clr has not killed enough zombies yet
+P:4C6B::multiply min kill req by 2?
+P:4C6D::assign current kill count to A
+P:4C70::compare kill count to 2*min kill req
+P:4C72::if kill count is >= 2* min continue, elese end SR
+P:4CED::yvel1 of aquazombie arc
+P:4CEE::vel2of aquazombie arc
+P:4DA5::bp hear when jason running away overworld after being hit enough
+P:4DCC::change state during jason attack
+P:5019::begin swoop pattern for crow
+P:516E::bp when encountering jason on the road
+P:519F::bp when encountering jason on the road
+P:533B::if jason has moved close enough to clr, swtich to attack
+P:5403::has the state 3 pause countdown hit 0?
+P:548B:decide_jsn_runaway:returns in A 0 or 1, indicating whether or not jason will run away
+P:548E::was jason hit 7 times?
+P:5495::don't run if fewer than 8 campers?
+P:549C::don't run if not many clr's left
+P:54CD::jason was brought to zero health, return 0x02
+P:551B::bp entering room with jason
+P:5797::pam vorhees head is about to charge you
+P:588C::something to do with lowering number of active mobs?
+P:5980:check_spawn_mob_mb
+P:59FF::check if number of spawned mobs is <= max spawned mobs
+P:5A01::no room to spawn more mobs, so return
+P:5A1B::it's time to spawn a new mob
+P:5A25::mob spawn lookup stuff?
+P:5AF8::set max enemies based on time of day?
+P:5B25::time till next spawn?
+P:5C4D::bp on jason hit but not on miss
+P:5C76::begin post-hit countdown?
+P:5C96:is_mob_dead:mob hp vs damage done
+P:5D6C::bp when enemy is throwing projectile?
+P:5DEA:enemy_hitbox_detection_mb:load xmax of box\n
+P:5DED::subtract xmin from xmax
+P:5DEF::remember box width
+P:5DF1::get clr xmax?
+P:5DF4::get clr xmin?
+P:5DF6::compare widths of hit boxen?
+P:5DF8::if clr_box_width >= enemy_box_width, else br
+P:5DFE::if enemy xmin >= clr xmin else br
+P:5E02::if enemy xmin >= clr xmax else br
+P:5E06::compare enemy xmax to clr xmin
+P:5E08::br enemy xmax < clr xmin
+P:5E0A::compare obj1 xmin and obj2 xmax
+P:5E10::cb_width was < eb_width
+P:5E12::compar clr xmin to enemy xmin
+P:5E9F:calc_hitbox_lims_mb:bp when throwing projectile in overworld and mob present
+P:5F1D:lkup_wep_dmg:Look up the damage for the current weapon and load it in to accumulator?\n
+P:5F75:begin_pause_screen
+P:6049::we get here at least when selecting clr in subscreen
+P:6056::get saved clr health
+P:6059::load into current clr health slot
+P:68A4::bp onentercabin
+P:6982::handle entering  a room in cabin?
+P:6985::comparing against room type?
+P:6993::is this cabin already lit?
+P:6998::bp when looking at fireplace in cabin
+P:6C3B:set_bits_051F_from_A:seems to usually be called after setting a bit in A. This looks like it's used to set bits in 051f which acts as a bitfield. lots of intersection with item pickup and spawn
+P:6C42:set_bits_0520_from_A
+P:6C71:has_key_query
+P:6D66::bp got here when walking around cabin, turning, and seeing path leading to fireplace\n\nbp got here when turning in cabin and note appeared\n\nbp because partial occluding wall?
+P:6D75::bp here when note found
+P:6F5F::save Y to stack
+P:6F6D::restore Y from stack without clobbering A
+P:6F73::is A just 2* number of clr here?
+P:73E1::push item ID to stack
+P:73E4::loading a memory location into 0x05B6-0x05B7. My guess is sprite for item?
+P:73F1::set item to spawn mb
+P:73F9::set x and y location to spawn item
+P:7446:spawn_item_on_kill
+P:7449::end subrouting if A is 0, this would happen if LSB of 0x51F is 0, we don't know what 0x51f does yet
+P:744B::Y as flag here. 0C if kill count high enough, 07 otherwise, then stored in 00
+P:744D::read kill count
+P:7450::is kill count >= 60
+P:7454::does character have the lighter
+P:7457::if they do, end sr
+P:745B::store Y flag value in $00
+P:745D::get horizontal pos of killed entity, X reg is indx of entity
+P:7460::remember horizontal location in $01
+P:7462::get ypos of killed enemy
+P:7468::stash y pos of killed enemy with 28 pixel offset (subtracted, so up) in $02
+P:7471:get_LSB_0x51F
+P:7477:set_item_spawn_loc
+P:7479::checking if either 0x6f4 or 0x6f5 are 0, is neither, end SR. otherwise, meat of sr is at 0xF485.\nsuspect spawning only 2 items
+P:7487::copying values from $00-$02 to three locations, with Y offsets\n\nthese values are in order:\n0C or 07 (for spawn on kill depending on enemies killed) can also be item it from spawn on jump, x loc to spawn, y loc to spawn
+P:749F::part of object detection for pickup, runs frequently
+P:74A6::object on screen?
+P:7521::triggered when picking up knife, probably other stuff too
+P:7541::when x=2, update count of clr vitamins when picked up
+P:7556::triggered when picking up key
+G:2000:PpuControl_2000:7  bit  0\n---- ----\nVPHB SINN\n|||| ||||\n|||| ||++- Base nametable address\n|||| ||    (0 = $2000; 1 = $2400; 2 = $2800; 3 = $2C00)\n|||| |+--- VRAM address increment per CPU read/write of PPUDATA\n|||| |     (0: add 1, going across; 1: add 32, going down)\n|||| +---- Sprite pattern table address for 8x8 sprites\n||||       (0: $0000; 1: $1000; ignored in 8x16 mode)\n|||+------ Background pattern table address (0: $0000; 1: $1000)\n||+------- Sprite size (0: 8x8; 1: 8x16)\n|+-------- PPU master/slave select\n|          (0: read backdrop from EXT pins; 1: output color on EXT pins)\n+--------- Generate an NMI at the start of the\n           vertical blanking interval (0: off; 1: on)
+G:2001:PpuMask_2001:7  bit  0\n---- ----\nBGRs bMmG\n|||| ||||\n|||| |||+- Display type: (0: color, 1: grayscale)\n|||| ||+-- 1: Show background in leftmost 8 pixels of screen, 0: Hide\n|||| |+--- 1: Show sprites in leftmost 8 pixels of screen, 0: Hide\n|||| +---- 1: Show background\n|||+------ 1: Show sprites\n||+------- Emphasize red\n|+-------- Emphasize green\n+--------- Emphasize blue
+G:2002:PpuStatus_2002:7  bit  0\n---- ----\nVSO. ....\n|||| ||||\n|||+-++++- Least significant bits previously written into a PPU register\n|||        (due to register not being updated for this address)\n||+------- Sprite overflow. The intent was for this flag to be set\n||         whenever more than eight sprites appear on a scanline, but a\n||         hardware bug causes the actual behavior to be more complicated\n||         and generate false positives as well as false negatives; see\n||         PPU sprite evaluation. This flag is set during sprite\n||         evaluation and cleared at dot 1 (the second dot) of the\n||         pre-render line.\n|+-------- Sprite 0 Hit.  Set when a nonzero pixel of sprite 0 overlaps\n|          a nonzero background pixel; cleared at dot 1 of the pre-render\n|          line.  Used for raster timing.\n+--------- Vertical blank has started (0: not in vblank; 1: in vblank).\n           Set at dot 1 of line 241 (the line *after* the post-render\n           line, false); cleared after reading $2002 and at dot 1 of the\n           pre-render line.
+G:2003:OamAddr_2003:Set OAM address - Write only
+G:2004:OamData_2004:Read/Write OAM data
+G:2005:PpuScroll_2005:Set PPU scroll, write twice - Write only
+G:2006:PpuAddr_2006:Set PPU address, write twice - Write only
+G:2007:PpuData_2007:Read/Write VRAM
+G:4000:Sq0Duty_4000:DDLC VVVV\nDuty (D), envelope loop / length counter halt (L), constant volume (C), volume/envelope (V)
+G:4001:Sq0Sweep_4001:EPPP NSSS\nSweep unit: enabled (E), period (P), negate (N), shift (S)
+G:4002:Sq0Timer_4002:TTTT TTTT\nTimer low (T)
+G:4003:Sq0Length_4003:LLLL LTTT\nLength counter load (L), timer high (T)
+G:4004:Sq1Duty_4004:DDLC VVVV\nDuty (D), envelope loop / length counter halt (L), constant volume (C), volume/envelope (V)
+G:4005:Sq1Sweep_4005:EPPP NSSS\nSweep unit: enabled (E), period (P), negate (N), shift (S)
+G:4006:Sq1Timer_4006:TTTT TTTT\nTimer low (T)
+G:4007:Sq1Length_4007:LLLL LTTT\nLength counter load (L), timer high (T)
+G:4008:TrgLinear_4008:CRRR RRRR\nLength counter halt / linear counter control (C), linear counter load (R)
+G:400A:TrgTimer_400A:TTTT TTTT\nTimer low (T)
+G:400B:TrgLength_400B:LLLL LTTT\nLength counter load (L), timer high (T)
+G:400C:NoiseVolume_400C:--LC VVVV\nEnvelope loop / length counter halt (L), constant volume (C), volume/envelope (V)
+G:400E:NoisePeriod_400E:L--- PPPP\nLoop noise (L), noise period (P)
+G:400F:NoiseLength_400F:LLLL L---\nLength counter load (L)
+G:4010:DmcFreq_4010:IL-- RRRR\nIRQ enable (I), loop (L), frequency (R)
+G:4011:DmcCounter_4011:-DDD DDDD\nLoad counter (D)
+G:4012:DmcAddress_4012:AAAA AAAA\nSample address (A)
+G:4013:DmcLength_4013:LLLL LLLL\nSample length (L)
+G:4014:SpriteDma_4014:Writing $XX will upload 256 bytes of data from CPU page $XX00-$XXFF to the internal PPU OAM.
+G:4015:ApuStatus_4015:Read:\nIF-D NT21\nDMC interrupt (I), frame interrupt (F), DMC active (D), length counter > 0 (N/T/2/1)\n\nWrite:\n---D NT21\nEnable DMC (D), noise (N), triangle (T), and pulse channels (2/1)
+G:4016:Ctrl1_4016:Read (NES - input):\n---4 3210\nRead data from controller port #1.\n\nWrite:\n---- ---A\nOutput data (strobe) to both controllers.
+G:4017:Ctrl2_FrameCtr_4017:Read (NES - input):\n---4 3210\nRead data from controller port #2.\n\nWrite (Frame counter): MI-- ----\nMode (M, 0 = 4-step, 1 = 5-step), IRQ inhibit flag (I)
