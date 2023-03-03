@@ -40,18 +40,7 @@ Byte:
 3. Palette ID
 4. X-location (screen coordinates)
 
-## 0x300 - 0x35F
-
-| Address     | Description                                                          | Notes                                              |
-| :----       | :----                                                                | :---                                               |
-| 0x320       | Changes when a counselor projectile is airborne                      | 0x01 in air, otherwise 0x04                        |
-| 0x328       | Changes when a counselor projectile is airborne                      | 0x46 in air, otherwise 0x2C                        |
-| 0x329       | Changes when a counselor projectile hits zombie                      | Usually 0xBE, 0xFA during hit                      |
-| 0x320       | Changes when a counselor projectile is airborne                      | 0x01 in air, otherwise 0x04                        |
-| 0x340       | Changes when a counselor projectile is airborne                      | 0x00 in air, otherwise 0xC6                        |
-| 0x348-0x349 | Timer active while counselor projectile is thrown.                   | Freezing value while fired doesn't allow second shot. Freeing before shot allows firing, but not a second shot .     |
-
-## 0x360-0x3C0
+## 0x300 - 0x3C7
 
 This is an 8-byte wide table which tracks a bunch of entity attributes. Each column is an entity (player, mob, projectile) but not every column is appears used. Every row is is an attribute (x-location, attack state, pointers).  Listing linearly here, but I also plan to describe it as a table once I suss out more of the attributes.
 
@@ -67,6 +56,12 @@ Known columns:
 
 | Address     | Description                                                          | Notes                                              |
 | :----       | :----                                                                | :---                                               |
+| 0x320       | Changes when a counselor projectile is airborne                      | 0x01 in air, otherwise 0x04                        |
+| 0x328       | Changes when a counselor projectile is airborne                      | 0x46 in air, otherwise 0x2C                        |
+| 0x329       | Changes when a counselor projectile hits zombie                      | Usually 0xBE, 0xFA during hit                      |
+| 0x320       | Changes when a counselor projectile is airborne                      | 0x01 in air, otherwise 0x04                        |
+| 0x340       | Changes when a counselor projectile is airborne                      | 0x00 in air, otherwise 0xC6                        |
+| 0x348-0x349 | Timer active while counselor projectile is thrown.                   | Freezing value while fired doesn't allow second shot. Freeing before shot allows firing, but not a second shot .     |
 | 0x360       | x-location (screen coords) of counselor                              |                                                    |
 | 0x361       | x-location (screen coords) of counselor projectile                   |                                                    |
 | 0x369       | Tracks if counselor projectile is off-screen                         | 0x00 in air and visible, 0x01 goes off right screen, 0xFF off left. Value remains after stone disappears. Freezing at 0x01 allows throw animation, but not projectile. Freezing at 0x00 allows projectile to wrap around screen.                                                                                                                                     |
@@ -74,12 +69,13 @@ Known columns:
 | 0x371       | y-location (screen coords) of counselor projectile                   |                                                             | 
 | 0x3C0       | Counselor walk direction (NOT facing direction)                       |           0x01 = Right, 0x02 = Left                         |   
 
-## 0x3C1-0x3FF
+## 0x3C8-0x41F
 
-TBD
+Most likely unused, at least during main game. All except four byte stay 0 and aren't read. The exceptions  are 0x407, 0x40F, 0x417, and 0x41F, which appear used during title screen/loading and maybe cinematics.
 
-## 0x400-4FF
+## 0x420-48F
 
+This may also have an 8-byte wide tabular formate similar to 0x300-0x3CF.
 
 | Address     | Description                                                          | Notes                                              |
 | :----       | :----                                                                | :---                                               |
@@ -104,6 +100,10 @@ TBD
 | :----       | :----                                                                | :---                                               |
 | 0x431       | Lifetime timer for counselor projectile        | Freezing allows projectile to continue until collision or going off screen. Freezing 0x369 as well allows projectile to wrap around.                |
 | 0x482-0x484 | Damage done to mob 1,2, or 3 | For Jason, this goes to 6 and cycles back to 0 |
+
+## 0x490-0x4FF
+
+Likely unused.
 
 ## 0x500-0x5FF
 
