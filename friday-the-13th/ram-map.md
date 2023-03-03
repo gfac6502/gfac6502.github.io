@@ -62,6 +62,10 @@ Known columns:
 | 0x320       | Changes when a counselor projectile is airborne                      | 0x01 in air, otherwise 0x04                        |
 | 0x340       | Changes when a counselor projectile is airborne                      | 0x00 in air, otherwise 0xC6                        |
 | 0x348-0x349 | Timer active while counselor projectile is thrown.                   | Freezing value while fired doesn't allow second shot. Freeing before shot allows firing, but not a second shot .     |
+| 0x350       | Counselor, facing direction                     | (overworld) 0x04 facing left, 0x00 facing right                      <br />  In cabin 0x02 when attack, 0x01 right after attack |
+| 0x352       | Enemy 1 Facing direction                     | (overworld, zombies) 0x04 facing left, 0x00 facing right                      <br />  Jason in cabin gets other values |
+| 0x353       | Enemy 2 Facing direction                     | (overworld, zombies) 0x04 facing left, 0x00 facing right   |
+| 0x354      | Enemy 3 Facing direction                     | (overworld, zombies) 0x04 facing left, 0x00 facing right  |
 | 0x360       | x-location (screen coords) of counselor                              |                                                    |
 | 0x361       | x-location (screen coords) of counselor projectile                   |                                                    |
 | 0x369       | Tracks if counselor projectile is off-screen                         | 0x00 in air and visible, 0x01 goes off right screen, 0xFF off left. Value remains after stone disappears. Freezing at 0x01 allows throw animation, but not projectile. Freezing at 0x00 allows projectile to wrap around screen.                                                                                                                                     |
