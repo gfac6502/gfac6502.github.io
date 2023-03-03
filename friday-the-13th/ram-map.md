@@ -200,7 +200,7 @@ A lot of the game state is in this block, I've broken it into a few subsections 
 | 0x0C      | Lake cabin 2                               |
 | 0x0D      | Lake cabin 3                               |
 | 0x0E      | First cabin CCW from north forest entrance |
-| 0x0F      | NW cabin cave loop                         [|](|)
+| 0x0F      | NW cabin cave loop                         |                       |
 | 0x10      | SE cabin cave loop                                                 |
 | 0x11      | SW cabin of of outer loop, first CW from cave trail                |
 | 0x12      | SW lake loop cabin                                                 |
