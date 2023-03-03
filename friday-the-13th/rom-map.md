@@ -5,12 +5,6 @@ nav_order: 2
 parent: Friday the 13th
 ---
 
-| Address | Name | Context       |
-| :---:   | :--- | :---          |
-| 0x505   | Player Health    | Inside cabin. | 
-| 0x507   | Active Counselor | Map Screen |
-| 0x51C   | Jason Health     | Inside cabin. | 
-
 # ROM Map
 
 ## Counselor Attributes
