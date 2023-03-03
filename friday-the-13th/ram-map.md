@@ -72,17 +72,13 @@ Known columns:
 | 0x369       | Tracks if counselor projectile is off-screen                         | 0x00 in air and visible, 0x01 goes off right screen, 0xFF off left. Value remains after stone disappears. Freezing at 0x01 allows throw animation, but not projectile. Freezing at 0x00 allows projectile to wrap around screen.                                                                                                                                     |
 | 0x370       | y-location (screen coords) of counselor                              |                                                             |
 | 0x371       | y-location (screen coords) of counselor projectile                   |                                                             | 
-| 0x3C0       | Counselor walk directio (NOT facing direction)                       |           0x01 = Right, 0x02 = Left                         |   
+| 0x3C0       | Counselor walk direction (NOT facing direction)                       |           0x01 = Right, 0x02 = Left                         |   
 
 ## 0x3C1-0x3FF
 
 TBD
 
 ## 0x400-4FF
-
-| Address     | Description                                                          | Notes                                              |
-| :----       | :----                                                                | :---                                               |
-| 0x360       | x-location (screen coords) of counselor                              |                                                    |
 
 
 | Address     | Description                                                          | Notes                                              |
