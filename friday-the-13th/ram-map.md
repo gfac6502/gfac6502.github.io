@@ -81,18 +81,23 @@ TBD
 
 | Address     | Description                                                          | Notes                                              |
 | :----       | :----                                                                | :---                                               |
-| 0x420 | Counselor move state | 0x00 = Standing/walking  <br />  
-0x01 = Jumping         <br />         
-0x02 =  TBD             <br />        
-0x03 = Crouching          <br />      
-0x04 = Throwing          <br />        
-0x05 = TBD               <br />        
-0x06 = TBD                <br />      
-0x07 = Normal overworld death  <br /> 
-0x08 = TBD                   <br />    
-0x09 = TBD                  <br />     
-0x0A = Walking in cabin     <br />    
-0xF0 = Death on boat        <br />     |
+| 0x420       | Counselor move state                                                 |                                                    |
+
+0x00 = Standing/walking  
+0x01 = Jumping                 
+0x02 =  TBD                    
+0x03 = Crouching             
+0x04 = Throwing                  
+0x05 = TBD                    
+0x06 = TBD              
+0x07 = Normal overworld death  
+0x08 = TBD                   
+0x09 = TBD                  
+0x0A = Walking in cabin     
+0xF0 = Death on boat         
+
+| Address     | Description                                                          | Notes                                              |
+| :----       | :----                                                                | :---                                               |
 | 0x431       | Lifetime timer for counselor projectile        | Freezing allows projectile to continue until collision or going off screen. Freezing 0x369 as well allows projectile to wrap around.                |
 | 0x482-0x484 | Damage done to mob 1,2, or 3 | For Jason, this goes to 6 and cycles back to 0 |
 
