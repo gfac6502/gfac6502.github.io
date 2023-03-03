@@ -176,7 +176,8 @@ A lot of the game state is in this block, I've broken it into a few subsections 
 | 0x58B       | Timer associated with camper attacks                                                                           |       |
 | 0x58C       | Timer associated with camper attacks                                                                           | Plays part in killing off campers during attack interval    |
 | 0x58D       | Camper attack countdown                                                                                        |       |
-| 0x58E       | Has something to do with Jason activity/attacks.                                                               |       |                  | 0x590       | Some sort of countdown/sequence                                                                                |       |
+| 0x58E       | Has something to do with Jason activity/attacks.                                                               |       |
+| 0x590       | Some sort of countdown/sequence                                                                                |       |
 
 
 | Address     | Description                                                          | Notes                                              |
