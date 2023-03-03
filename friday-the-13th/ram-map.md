@@ -71,7 +71,8 @@ Known columns:
 | 0x361       | x-location (screen coords) of counselor projectile                   |                                                    |
 | 0x369       | Tracks if counselor projectile is off-screen                         | 0x00 in air and visible, 0x01 goes off right screen, 0xFF off left. Value remains after stone disappears. Freezing at 0x01 allows throw animation, but not projectile. Freezing at 0x00 allows projectile to wrap around screen.                                                                                                                                     |
 | 0x370       | y-location (screen coords) of counselor                              |                                                             |
-| 0x371       | y-location (screen coords) of counselor projectile                   |                                                             |     | 0x3C0       | Counselor walk directio (NOT facing direction)                       |           0x01 = Right, 0x02 = Left                         |   
+| 0x371       | y-location (screen coords) of counselor projectile                   |                                                             | 
+| 0x3C0       | Counselor walk directio (NOT facing direction)                       |           0x01 = Right, 0x02 = Left                         |   
 
 ## 0x3C1-0x3FF
 
@@ -81,20 +82,27 @@ TBD
 
 | Address     | Description                                                          | Notes                                              |
 | :----       | :----                                                                | :---                                               |
+| 0x360       | x-location (screen coords) of counselor                              |                                                    |
+
+
+| Address     | Description                                                          | Notes                                              |
+| :----       | :----                                                                | :---                                               |
 | 0x420       | Counselor move state                                                 |                                                    |
 
-0x00 = Standing/walking  
-0x01 = Jumping                 
-0x02 =  TBD                    
-0x03 = Crouching             
-0x04 = Throwing                  
-0x05 = TBD                    
-0x06 = TBD              
-0x07 = Normal overworld death  
-0x08 = TBD                   
-0x09 = TBD                  
-0x0A = Walking in cabin     
-0xF0 = Death on boat         
+| Value     | Counselor move state                                                          | 
+| :----       | :----                                                                       | 
+| 0x00 | Standing/walking  |
+| 0x01 | Jumping      |           
+| 0x02 |  TBD          |          
+| 0x03 | Crouching      |       
+| 0x04 | Throwing        |          
+| 0x05 | TBD              |      
+| 0x06 | TBD              |
+| 0x07 | Normal overworld death | 
+| 0x08 | TBD                   |
+| 0x09 | TBD                  |
+| 0x0A | Walking in cabin     |
+| 0xF0 | Death on boat         |
 
 | Address     | Description                                                          | Notes                                              |
 | :----       | :----                                                                | :---                                               |
